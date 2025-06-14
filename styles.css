@@ -1,0 +1,120 @@
+body{
+    background-color:#F0F1C5 ;
+}
+
+.img-destaque {
+    width: 300px; 
+    height: 168px ;
+    max-width: 400px; 
+    margin: 0 auto; 
+}
+
+h1{
+    background-color: #9EC6F3;
+    margin-bottom: 50px;
+}
+
+#carouselReceitas h5 {
+    text-decoration: none; 
+    color: #333; 
+    font-weight: bold; 
+    text-align: center; /* Centraliza o texto*/
+    margin-top: 10px; /* Adiciona um espaço acima do título*/
+}
+
+#carouselReceitas a {
+    text-decoration: none; /* Remove o sublinhado dos links */
+}
+
+#carouselReceitas a:hover img.img-destaque {
+    transform: scale(1.15); /* Aumenta a escala da imagem */
+    transition: transform 0.3s ease-in-out; /* Adiciona uma transição suave */
+}
+
+.img-destaque {
+    width: 300px;
+    height: 168px;
+    max-width: 400px;
+    margin: 0 auto;
+    transition: transform 0.3s ease-in-out; /* Garante que a transição funcione também ao sair do hover */
+    transform: scale(1); /* Escala inicial */
+}
+
+.carousel-item h5 {
+    font-weight: 500;
+    margin-top: 10px;
+    color: #333;
+  }
+
+
+  .carousel-indicators [data-bs-target] {
+    background-color: #000; /* corzinha da bolinha */
+    opacity: 0.7; /* meio transparente, de leve */
+  }
+  
+  .carousel-indicators .active {
+    background-color: #007bff; /* azulzinho só na bolinha ativa */
+    opacity: 1; /* bolinha ativa fica 100% */
+  }
+
+  .buttons {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content:space-between
+}
+
+.buttons button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #d1c4e9; /* Ficou mais clarinho */
+    color: #333;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttons button:hover {
+    background-color: #b39ddb; /* Um roxinho ainda mais fofo no hover */
+    transform: scale(1.05); /* Dá uma crescidinha gostosa */
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.container2 {
+    width: 800px;
+    margin: 20px auto;
+    background-color: #ffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 1.5px 1.5px 5px black;
+    flex-direction: column;
+    display: flex;
+    
+}
+
+.container2 img{
+
+width: 100%;
+}
+
+#receitas{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+width: 100%;
+}
+
+
+
+
+
+  

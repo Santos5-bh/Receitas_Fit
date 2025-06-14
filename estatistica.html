@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Receitas FIT - Estatística</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Chart.js (para os gráficos de pizza e barras) -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
+
+  <!-- Mapbox GL JS (para o mapa interativo) -->
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js"></script>
+
+
+  <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    h1,
+    h2 {
+      text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .chart-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 2rem auto;
+    }
+
+    #map {
+      width: 100%;
+      height: 500px;
+      margin: 2rem auto;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    body {
+      background-color: #F0F1C5;
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="IMAGENS/logo.jpg" alt="Logo" width="40" class="me-2">
+        Receitas FIT
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal"
+        aria-controls="menuPrincipal" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="menuPrincipal">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#receitas">Receitas</a></li>
+          <li class="nav-item"><a class="nav-link active" href="cadastro_receitas.html">Cadastre suas
+              receitas</a></li>
+          <li class="nav-item">
+            <a class="nav-link active" href="estatistica.html">Estatística</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <h1>Estatística by Receitas FIT</h1>
+
+  <!-- SEÇÃO DE GRÁFICOS -->
+  <section id="graficos" class="container">
+    <h2>Distribuição de Receitas por Categoria</h2>
+    <div class="chart-container">
+      <canvas id="pieChartCategorias"></canvas>
+    </div>
+
+    <h2>Receitas por Faixa de Tempo de Preparo</h2>
+    <div class="chart-container">
+      <canvas id="barChartTempo"></canvas>
+    </div>
+  </section>
+
+  <!-- SEÇÃO DE MAPA -->
+  <section id="mapa" class="container">
+    <h2>Origem Típica das Receitas (regiões do Mundo)</h2>
+    <div id="map"></div>
+  </section>
+
+  <!-- Bootstrap JS (bundle com Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  <!-- SCRIPT PRINCIPAL: Carrega dados e monta Gráficos + Mapa -->
+<script>
+  // 1) URL do JSON-Server
+  const API = 'http://localhost:3000/receitas';
+
+  // 2) Ao carregar a página, busca todos os dados do /receitas
+  document.addEventListener('DOMContentLoaded', initDashboard);
+
+  async function initDashboard() {
+    try {
+      const resp = await fetch(API);
+      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+      const categorias = await resp.json();
+
+      montarPizzaCategorias(categorias);
+      montarBarTempo(categorias);
+      montarMapaOrigem(categorias);
+    } catch (err) {
+      console.error('Erro ao carregar dados para o Dashboard:', err);
+      alert('Não foi possível carregar os dados do Dashboard.');
+    }
+  }
+
+  // ======== 3) FUNÇÃO: Gráfico de Pizza (Chart.js) ========
+  function montarPizzaCategorias(categorias) {
+    // Etiquetas (nome de cada categoria)
+    const rotulos = categorias.map(cat => cat.nome);
+    // Quantidades: número de receitas em cada categoria
+    const quantidades = categorias.map(cat =>
+      Array.isArray(cat.lista) ? cat.lista.length : 0
+    );
+
+    // Pega o contexto do <canvas>
+    const ctxPizza = document
+      .getElementById('pieChartCategorias')
+      .getContext('2d');
+
+    new Chart(ctxPizza, {
+      type: 'pie',
+      data: {
+        labels: rotulos,
+        datasets: [
+          {
+            data: quantidades,
+            backgroundColor: [
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56',
+              '#4BC0C0',
+              '#9966FF',
+              '#FF9F40',
+              '#66FF66',
+              '#FF6666'
+            ],
+            borderColor: '#fff',
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: 'bottom'
+          },
+          title: {
+            display: false
+          }
+        }
+      }
+    });
+  }
+
+  // ======== 4) FUNÇÃO: Gráfico de Barras por Faixas de Tempo ========
+  function montarBarTempo(categorias) {
+    // Definir faixas de tempo (em minutos)
+    const faixas = [
+      { label: 'Até 30 min', min: 0, max: 30, count: 0 },
+      { label: '31–60 min', min: 31, max: 60, count: 0 },
+      { label: 'Mais de 60 min', min: 61, max: Infinity, count: 0 }
+    ];
+
+    // Para cada receita, incrementar a faixa correta
+    categorias.forEach(cat => {
+      if (!Array.isArray(cat.lista)) return;
+      cat.lista.forEach(receita => {
+        const tp = Number(receita.tempo_preparo);
+        if (!isNaN(tp)) {
+          for (const faixa of faixas) {
+            if (tp >= faixa.min && tp <= faixa.max) {
+              faixa.count++;
+              break;
+            }
+          }
+        }
+      });
+    });
+
+    const labelsBar = faixas.map(f => f.label);
+    const dadosBar = faixas.map(f => f.count);
+
+    const ctxBar = document
+      .getElementById('barChartTempo')
+      .getContext('2d');
+    new Chart(ctxBar, {
+      type: 'bar',
+      data: {
+        labels: labelsBar,
+        datasets: [
+          {
+            label: 'Nº de Receitas',
+            data: dadosBar,
+            backgroundColor: '#36A2EB'
+          }
+        ]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            ticks: { stepSize: 1 }
+          }
+        },
+        plugins: {
+          legend: { display: false },
+          title: { display: false }
+        }
+      }
+    });
+  }
+
+  // ======== 5) FUNÇÃO: Mapa Mapbox usando “região típica” como chave ========
+  function montarMapaOrigem(categorias) {
+    
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FudG9zNSIsImEiOiJjbWJkdmU2YXMyMmZmMm1wdHdsYXN3NG16In0.39FZzDP-rpgDkVi6p1wjlg';
+
+    // 5.1) Cria o mapa em #map
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v12',
+      center: [-46.6333, -23.5505], // mapa centralizado em São Paulo (Sudeste)
+      zoom: 3
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+
+    // 5.2) Dicionário: string de região → coordenadas aproximadas
+    const regioesGeo = {
+      'Norte':        { lat: -3.1170,  lng: -60.0260 }, // Manaus
+      'Nordeste':     { lat: -8.0476,  lng: -34.8770 }, // Recife
+      'Sudeste':      { lat: -23.5505, lng: -46.6333 }, // São Paulo
+      'Sul':          { lat: -30.0346, lng: -51.2177 }, // Porto Alegre
+      'Centro-Oeste': { lat: -15.7801, lng: -47.9292 },  // Brasília
+      'Japão':        { lat: 35.6895,  lng: 139.6917 },  // Tóquio
+      'Inglaterra':   { lat: 54.5074,  lng: -0.1278  },  // Londres
+      'Polônia':      { lat: 52.2297,  lng: 21.0122  },  // Varsóvia
+      'China':        { lat: 39.9042,  lng: 116.4074 },  // Pequim
+      'Itália':       { lat: 41.9028,  lng: 12.4964  },  // Roma
+      'California':   { lat: 38.5816,  lng: -121.4944 },  // Sacramento
+      'EUA':          { lat: 38.9072,  lng: -77.0369 },  // Washington
+      'França':       { lat: 48.8566,  lng: 2.3522 },  // Paris
+      'Mexico':       { lat: 19.4326,  lng: -99.1332 }  // Cidade do México
+    };
+
+    // 5.3) Quando o mapa estiver carregado, adiciona os marcadores
+    map.on('load', () => {
+      categorias.forEach(cat => {
+        if (!Array.isArray(cat.lista)) return;
+        cat.lista.forEach(receita => {
+          // Cada receita tem receita.origem = "Sudeste" ou "Norte" etc.
+          const reg = String(receita.origem || '').trim();
+          if (regioesGeo[reg]) {
+            const { lat, lng } = regioesGeo[reg];
+
+            // Cria um marcador colorido
+            new mapboxgl.Marker({ color: '#FF6384' })
+              .setLngLat([lng, lat])
+              .setPopup(
+                new mapboxgl.Popup({ offset: 25 }).setHTML(`
+                  <strong>${receita.nome}</strong><br>
+                  Categoria: ${cat.nome}<br>
+                  Tempo: ${receita.tempo_preparo} min<br>
+                  Região: ${reg}
+                `)
+              )
+              .addTo(map);
+          }
+        });
+      });
+    });
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <footer class="bg-light text-center text-lg-start mt-5">
+    <div class="container p-4">
+      <h5 class="text-uppercase">Informações do(a) Aluno(a)</h5>
+      <hr>
+      <p><strong>Nome:</strong> Gabriel Santos</p>
+      <p><strong>Curso:</strong> Engenharia de Software</p>
+      <p><strong>Turma:</strong> Presencial - 2025/1</p>
+      <p><strong>Sobre:</strong> Estudante que vai dominar o mundo da programação. Futuro bombeiro! 🚀</p>
+      <div class="mt-3">
+        <strong>Redes Sociais:</strong><br>
+        <a href="https://www.linkedin.com/in/gabriel-santos-b52487304/" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/24/145/145807.png" alt="LinkedIn" class="mx-2">
+        </a>
+        <a href="https://www.instagram.com/_gabrielsantosz_/" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/24/2111/2111463.png" alt="Instagram" class="mx-2">
+        </a>
+      </div>
+    </div>
+    <div class="text-center p-3" style="background-color: rgba(0,0,0,0.05);">
+      © 2025 - Gabriel Santos Martins - Engenharia de Software
+    </div>
+  </footer>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="estatistica.js"></script>
+</body>
+
+</html>

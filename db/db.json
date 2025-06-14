@@ -1,0 +1,659 @@
+{
+  "receitas": [
+    {
+      "id": "0",
+      "nome": "Dietas",
+      "lista": [
+        {
+          "id": 0,
+          "nome": "Sopa de Frango com legumes, mandioquinha e couve.",
+          "descrição": "Deliciosa sopa de frango!",
+          "ingredientes": [
+            "300g de frango;",
+            "4 colheres de servir de legumes de sua preferência;",
+            "2 colheres de servir de mandioquinha;",
+            "4 punhados de couve;",
+            "Cebola, alho, sal e azeite extravirgem para refogar."
+          ],
+          "modo_preparo": [
+            "Em uma panela, aqueça um fio de azeite e adicione o frango em cubos pequenos até que fique selado.",
+            "Tempere com cebola, alho e sal a gosto.",
+            "Quando a carne estiver dourada, coloque os demais ingredientes, misture e adicione água até cobrir tudo.",
+            "Deixe cozinhar por cerca de 30 minutos ou até que os legumes estejam macios. Se desejar, bata uma parte da sopa para deixá-la mais cremosa e misture com o restante."
+          ],
+          "imagem_url": "imagens/Sopa_Frango.jpg",
+          "tempo_preparo": 70,
+          "origem": "Japão"
+        },
+        {
+          "id": 1,
+          "nome": "Sopa de Legumes.",
+          "descrição": "Deliciosa sopa de legumes!",
+          "ingredientes": [
+            "1 berinjela;",
+            "3 cenouras;",
+            "2 xícaras de vagem picada;",
+            "2 tomates picados;",
+            "1 repolho;",
+            "1 nabo;",
+            "1 cebola picada;",
+            "2 maços de cheiro-verde;",
+            "1 maço de aipo ou salsão;",
+            "1 dente de alho;",
+            "4 jilós;",
+            "2 pimentões;",
+            "Pouco sal e pimenta-do-reino."
+          ],
+          "modo_preparo": [
+            "Higienizar os legumes, cortá-los em pedaços pequenos ou médios, colocar em uma panela grande e cobrir com água.",
+            "Tempere e leve a panela a fogo alto; quando ferver, abaixe o fogo e deixe cozinhar até que os legumes fiquem macios.",
+            "Quando a sopa estiver pronta, desligue o fogo, deixe esfriar e, se quiser, leve-a à geladeira em potes. Não é necessário bater."
+          ],
+          "imagem_url": "imagens/Sopa_Legumes.jpg",
+          "tempo_preparo": 35,
+          "origem": "Inglaterra"
+        },
+        {
+          "id": 2,
+          "nome": "Sopa de Carne com repolho",
+          "descrição": "Deliciosa sopa de carne com repolho!",
+          "ingredientes": [
+            "300g de carne moída;",
+            "4 colheres de servir cheias de cenoura;",
+            "2 colheres de servir de batata-doce;",
+            "4 punhados de repolho;",
+            "Cebola, alho, sal e azeite extravirgem para refogar."
+          ],
+          "modo_preparo": [
+            "Aqueça o azeite e adicione a carne moída até que perca o tom avermelhado.",
+            "Em seguida, coloque cebola, alho e sal.",
+            "Mexa até que dourem e adicione os demais ingredientes picados.",
+            "Cubra tudo com água e deixe cozinhar até que os legumes fiquem macios. Bata no liquidificador e sirva."
+          ],
+          "imagem_url": "imagens/Sopa_Carne.jpg",
+          "tempo_preparo": 55,
+          "origem": "Polônia"
+        },
+        {
+          "id": 3,
+          "nome": "Creme de Abóbora com Frango",
+          "descrição": "Delicioso creme de abóbora com frango!",
+          "ingredientes": [
+            "1/2 abóbora moranga;",
+            "500g de peito de frango em cubos;",
+            "1 cebola pequena picada;",
+            "1 litro de água fervente;",
+            "1 caixinha de creme de leite (opcional);",
+            "Alho, pimenta, sal, salsinha e cebolinha a gosto;",
+            "Azeite para refogar."
+          ],
+          "modo_preparo": [
+            "Tempere o frango com sal, limão e ervas aromáticas; deixe descansar por 1h.",
+            "Corte a abóbora e cozinhe em água até ficar firme. Bata no liquidificador.",
+            "Refogue cebola no azeite, adicione o frango e deixe dourar.",
+            "Junte a abóbora batida e tempere a gosto; deixe ferver por 5–10 min."
+          ],
+          "imagem_url": "imagens/Creme_de_abobora.jpg",
+          "tempo_preparo": 50,
+          "origem": "China"
+        },
+        {
+          "id": 4,
+          "nome": "Sopa de Carne com abobrinha",
+          "descrição": "Deliciosa sopa de carne com abobrinha!",
+          "ingredientes": [
+            "1/2 abobrinha;",
+            "2 cenouras;",
+            "1 xícara de vagem picada;",
+            "1 tomate picado;",
+            "500g de carne moída magra;",
+            "1 cebola picada;",
+            "1 maço de cheiro-verde;",
+            "1 maço de aipo ou salsão;",
+            "2 dentes de alho;",
+            "Sal e pimenta-do-reino a gosto;",
+            "Azeite para refogar."
+          ],
+          "modo_preparo": [
+            "Tempere a carne com sal, alho e pimenta.",
+            "Lave e corte os legumes em cubos.",
+            "Refogue a cebola no azeite, adicione a carne e deixe dourar.",
+            "Junte os legumes, cubra com água e cozinhe até ficarem macios."
+          ],
+          "imagem_url": "imagens/Sopa_abobrinha.jpg",
+          "tempo_preparo": 60,
+          "origem": "Itália"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "nome": "Vitaminas",
+      "lista": [
+        {
+          "id": 0,
+          "nome": "Smoothie de iogurte, abacate, cacau e banana.",
+          "descrição": "Refrescante e delicioso!",
+          "ingredientes": [
+            "100 mL de água;",
+            "½ avocado;",
+            "½ banana congelada;",
+            "½ pote de iogurte natural;",
+            "1 colher de chá de cacau em pó 100%;",
+            "Adoçante a gosto."
+          ],
+          "modo_preparo": [
+            "Bata todos os ingredientes no liquidificador e consuma em seguida."
+          ],
+          "imagem_url": "imagens/vitamina1.jpg",
+          "tempo_preparo": 5,
+          "origem": "Califórnia"
+        },
+        {
+          "id": 1,
+          "nome": "Smoothie abacate com whey protein e cacau",
+          "descrição": "Refrescante e delicioso!",
+          "ingredientes": [
+            "200 mL de leite vegetal;",
+            "½ avocado;",
+            "2 colheres de sopa de whey protein;",
+            "1 colher de sobremesa de cacau 100%;",
+            "Adoçante a gosto;",
+            "Cacau nibs (opcional)."
+          ],
+          "modo_preparo": [
+            "Bata todos os ingredientes no liquidificador e consuma em seguida."
+          ],
+          "imagem_url": "imagens/vitamina2.png.jpg",
+          "tempo_preparo": 5,
+          "origem": "Califórnia"
+        },
+        {
+          "id": 2,
+          "nome": "Smoothie de morangos com leite vegetal",
+          "descrição": "Refrescante e delicioso!",
+          "ingredientes": [
+            "200 mL de leite vegetal sem açúcar;",
+            "1 banana congelada;",
+            "6 morangos;",
+            "½ colher de chá de essência de baunilha;",
+            "1 colher de sopa de chia."
+          ],
+          "modo_preparo": [
+            "Bata todos os ingredientes até homogeneizar."
+          ],
+          "imagem_url": "imagens/vitamina3.jpg",
+          "tempo_preparo": 5,
+          "origem": "Califórnia"
+        },
+        {
+          "id": 3,
+          "nome": "Vitamina de abacate",
+          "descrição": "Refrescante e delicioso!",
+          "ingredientes": [
+            "150 mL de leite integral;",
+            "50 g de abacate;",
+            "1 colher de chá de açúcar de coco;",
+            "1 colher de sopa de chia."
+          ],
+          "modo_preparo": [
+            "Bata leite, abacate e açúcar;",
+            "Adicione chia e misture;",
+            "Consuma em seguida."
+          ],
+          "imagem_url": "imagens/vitamina4.jpg",
+          "tempo_preparo": 5,
+          "origem": "Nordeste"
+        },
+        {
+          "id": 4,
+          "nome": "Creme de abacate com cacau",
+          "descrição": "Refrescante e delicioso!",
+          "ingredientes": [
+            "1 abacate;",
+            "2 colheres de sopa de óleo de coco;",
+            "3 colheres de sopa de cacau em pó;",
+            "Adoçante a gosto."
+          ],
+          "modo_preparo": [
+            "Amasse o abacate;",
+            "Misture óleo, cacau e adoçante;",
+            "Bata até homogeneizar;",
+            "Guarde na geladeira por até 3 dias."
+          ],
+          "imagem_url": "imagens/vitamina5.png",
+          "tempo_preparo": 4,
+          "origem": "Nordeste"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "nome": "Café da manhã",
+      "lista": [
+        {
+          "id": 0,
+          "nome": "Ovos mexidos com bacon e mix de sementes.",
+          "descrição": "Prático e rápido!",
+          "ingredientes": [
+            "2 ovos;",
+            "15 g de bacon;",
+            "Sal e pimenta a gosto;",
+            "1 colher de sopa de mix de sementes;"
+          ],
+          "modo_preparo": [
+            "Frite o bacon;",
+            "Junte os ovos e tempere;",
+            "Mexa até ficar cremoso;",
+            "Salpique sementes e sirva."
+          ],
+          "imagem_url": "imagens/manha1.jpg",
+          "tempo_preparo": 12,
+          "origem": "EUA"
+        },
+        {
+          "id": 1,
+          "nome": "Ovos poché com abacate",
+          "descrição": "Prático e rápido!",
+          "ingredientes": [
+            "2 ovos gelados;",
+            "1 colher de sopa de vinagre;",
+            "500 mL de água;",
+            "¼ de abacate;",
+            "Gotas de limão a gosto."
+          ],
+          "modo_preparo": [
+            "Ferva água com vinagre;",
+            "Cozinhe ovos por 3–4 min;",
+            "Retire com escumadeira;",
+            "Sirva com abacate."
+          ],
+          "imagem_url": "imagens/manha2.jpg",
+          "tempo_preparo": 12,
+          "origem": "Inglaterra"
+        },
+        {
+          "id": 2,
+          "nome": "Panqueca de aveia",
+          "descrição": "Prático e rápido!",
+          "ingredientes": [
+            "1 ovo;",
+            "2 colheres de sopa de aveia;",
+            "Pitadas de sal e baunilha;"
+          ],
+          "modo_preparo": [
+            "Misture ovo e aveia;",
+            "Aqueça frigideira;",
+            "Cozinhe 3 min de cada lado."
+          ],
+          "imagem_url": "imagens/manha3.jpg",
+          "tempo_preparo": 20,
+          "origem": "Sudeste"
+        },
+        {
+          "id": 3,
+          "nome": "Panqueca de banana",
+          "descrição": "Prático e rápido!",
+          "ingredientes": [
+            "1 banana madura;",
+            "1 ovo;",
+            "1 colher de sobremesa de aveia;",
+            "Canela a gosto;"
+          ],
+          "modo_preparo": [
+            "Amasse a banana;",
+            "Misture com ovo e aveia;",
+            "Cozinhe até dourar."
+          ],
+          "imagem_url": "imagens/manha4.jpg",
+          "tempo_preparo": 15,
+          "origem": "Nordeste"
+        },
+        {
+          "id": 4,
+          "nome": "Tapioca com frango e requeijão",
+          "descrição": "Prático e rápido!",
+          "ingredientes": [
+            "3 colheres de sopa de goma de tapioca;",
+            "4 colheres de sopa de frango desfiado;",
+            "1 colher de sobremesa de requeijão."
+          ],
+          "modo_preparo": [
+            "Misture frango e requeijão;",
+            "Toste tapioca na frigideira;",
+            "Recheie e dobre ao meio."
+          ],
+          "imagem_url": "imagens/manha5.jpg",
+          "tempo_preparo": 15,
+          "origem": "Nordeste"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "Almoço",
+      "lista": [
+        {
+          "id": 0,
+          "nome": "Risoto de couve-flor com espinafre e bacon.",
+          "descrição": "Prático e delicioso",
+          "ingredientes": [
+            "150 g de base para risoto de couve-flor;",
+            "30 g de bacon picado;",
+            "50 g de espinafre;"
+          ],
+          "modo_preparo": [
+            "Frite bacon;",
+            "Cozinhe risoto com espinafre;",
+            "Adicione bacon e parmesão;"
+          ],
+          "imagem_url": "imagens/almoço1.jpg",
+          "tempo_preparo": 40,
+          "origem": "Sudeste"
+        },
+        {
+          "id": 1,
+          "nome": "Legumes Assados",
+          "descrição": "Prático e delicioso",
+          "ingredientes": [
+            "1 berinjela;",
+            "1 abobrinha;",
+            "1 pimentão;",
+            "Azeite e sal;"
+          ],
+          "modo_preparo": [
+            "Higienize e pique legumes;",
+            "Tempere e asse 40 min."
+          ],
+          "imagem_url": "imagens/almoço2.jpg",
+          "tempo_preparo": 50,
+          "origem": "Sul"
+        },
+        {
+          "id": 2,
+          "nome": "Legumes gratinados",
+          "descrição": "Prático e delicioso!",
+          "ingredientes": [
+            "Tomate, berinjela, brócolis, couve-flor;",
+            "200 mL de creme de leite;",
+            "Queijo ralado;"
+          ],
+          "modo_preparo": [
+            "Cozinhe legumes;",
+            "Misture creme e queijo;",
+            "Gratine 25 min."
+          ],
+          "imagem_url": "imagens/almoço3.jpg",
+          "tempo_preparo": 45,
+          "origem": "Sul"
+        },
+        {
+          "id": 3,
+          "nome": "Estrogonofe de frango com mostarda Dijon",
+          "descrição": "Prático e delicioso!",
+          "ingredientes": [
+            "500 g de peito de frango;",
+            "4 colheres de sopa de mostarda Dijon;",
+            "400 mL de creme de leite;"
+          ],
+          "modo_preparo": [
+            "Refogue frango;",
+            "Adicione mostarda e creme;",
+            "Ajuste sal."
+          ],
+          "imagem_url": "imagens/almoço4.jpg",
+          "tempo_preparo": 35,
+          "origem": "Sudeste"
+        },
+        {
+          "id": 4,
+          "nome": "Suflê de legumes",
+          "descrição": "Prático e delicioso!",
+          "ingredientes": [
+            "Brócolis, tomate, cebola, ovos, parmesão, ervas."
+          ],
+          "modo_preparo": [
+            "Faça base de leite e farinha;",
+            "Misture legumes e queijo;",
+            "Asse até dourar."
+          ],
+          "imagem_url": "imagens/almoço5.jpg",
+          "tempo_preparo": 40,
+          "origem": "França"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nome": "Café da tarde",
+      "lista": [
+        {
+          "id": 0,
+          "nome": "Crumble de banana.",
+          "descrição": "Rápido e prático",
+          "ingredientes": [
+            "1 colher de aveia;",
+            "1 colher de farinha de amêndoas;",
+            "1 banana;"
+          ],
+          "modo_preparo": [
+            "Misture tudo;",
+            "Asse 15 min."
+          ],
+          "imagem_url": "imagens/tarde1.png",
+          "tempo_preparo": 25,
+          "origem": "Inglaterra"
+        },
+        {
+          "id": 1,
+          "nome": "Barra de cereal caseira",
+          "descrição": "Rápido e prático",
+          "ingredientes": [
+            "Aveia, açúcar mascavo, melado, bananas, castanhas."
+          ],
+          "modo_preparo": [
+            "Misture ingredientes secos e bananas;",
+            "Asse 30 min."
+          ],
+          "imagem_url": "imagens/tarde2.png",
+          "tempo_preparo": 35,
+          "origem": "Sudeste"
+        },
+        {
+          "id": 2,
+          "nome": "Pão rápido de frigideira",
+          "descrição": "Rápido e prático",
+          "ingredientes": [
+            "1 ovo;",
+            "2 colheres de aveia;",
+            "1 colher de requeijão;"
+          ],
+          "modo_preparo": [
+            "Misture tudo;",
+            "Cozinhe 3 min de cada lado."
+          ],
+          "imagem_url": "imagens/tarde3.png",
+          "tempo_preparo": 10,
+          "origem": "Nordeste"
+        },
+        {
+          "id": 3,
+          "nome": "Panini com queijo",
+          "descrição": "Rápido e prático",
+          "ingredientes": [
+            "Ovo, requeijão, sal, fermento."
+          ],
+          "modo_preparo": [
+            "Misture;",
+            "Micro-ondas 2:30 min."
+          ],
+          "imagem_url": "imagens/tarde4.png",
+          "tempo_preparo": 7,
+          "origem": "Itália"
+        },
+        {
+          "id": 4,
+          "nome": "Pão de queijo de frigideira com tapioca",
+          "descrição": "Rápido e prático",
+          "ingredientes": [
+            "Tapioca, requeijão, parmesão, ovo."
+          ],
+          "modo_preparo": [
+            "Misture;",
+            "Frigideira até tostar."
+          ],
+          "imagem_url": "imagens/tarde5.png.jpg",
+          "tempo_preparo": 15,
+          "origem": "Centro-Oeste"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "nome": "Janta/Lanche",
+      "lista": [
+        {
+          "id": 0,
+          "nome": "Omelete de brócolis com tomate e queijo.",
+          "descrição": "Fácil de fazer",
+          "ingredientes": [
+            "2 ovos;",
+            "Brócolis e tomate;",
+            "Queijo, sal e pimenta."
+          ],
+          "modo_preparo": [
+            "Refogue brócolis e tomate;",
+            "Adicione ovos;",
+            "Cozinhe e sirva."
+          ],
+          "imagem_url": "imagens/janta1.jpg",
+          "tempo_preparo": 15,
+          "origem": "Sudeste"
+        },
+        {
+          "id": 1,
+          "nome": "Crepioca com queijo, tomate e orégano",
+          "descrição": "Fácil de fazer",
+          "ingredientes": [
+            "1 ovo;",
+            "2 colheres de sopa de tapioca;",
+            "Queijo, tomate e orégano."
+          ],
+          "modo_preparo": [
+            "Misture ovo e tapioca;",
+            "Frigideira até tostar;",
+            "Recheie e sirva."
+          ],
+          "imagem_url": "imagens/janta2.jpg",
+          "tempo_preparo": 12,
+          "origem": "Nordeste"
+        },
+        {
+          "id": 2,
+          "nome": "Tacos low carb",
+          "descrição": "Fácil de fazer",
+          "ingredientes": [
+            "Ovos, cream cheese, psyllium, farinha de coco."
+          ],
+          "modo_preparo": [
+            "Misture massas;",
+            "Asse 5 min."
+          ],
+          "imagem_url": "imagens/janta3.jpg",
+          "tempo_preparo": 25,
+          "origem": "Mexico"
+        },
+        {
+          "id": 3,
+          "nome": "Filé de frango empanado",
+          "descrição": "Fácil de fazer",
+          "ingredientes": [
+            "Peito de frango, ovo, leite de coco, farinha de coco."
+          ],
+          "modo_preparo": [
+            "Tempere frango;",
+            "Passe no ovo e na farinha;",
+            "Asse ou frite."
+          ],
+          "imagem_url": "imagens/janta4.jpg",
+          "tempo_preparo": 30,
+          "origem": "Sudeste"
+        },
+        {
+          "id": 4,
+          "nome": "Peito de frango grelhado ao molho de queijos",
+          "descrição": "Fácil de fazer",
+          "ingredientes": [
+            "Peito de frango, queijos variados, creme de leite."
+          ],
+          "modo_preparo": [
+            "Grelhe frango;",
+            "Faça molho de queijos;",
+            "Sirva."
+          ],
+          "imagem_url": "imagens/janta5.jpg",
+          "tempo_preparo": 35,
+          "origem": "Sudeste"
+        }
+      ]
+    },
+    {
+      "id": "user",
+      "nome": "Receitas dos Usuários",
+      "lista": [
+        {
+          "nome": "Panqueca Proteica de Banana",
+          "descrição": "Deliciosa panqueca",
+          "ingredientes": [
+            "1 banana madura",
+            "1 ovo",
+            "2 colheres de sopa de aveia em flocos",
+            "1 colher de cha de fermento em po",
+            "canela agosto."
+          ],
+          "modo_preparo": [
+            "Amasse bem a banana com um garfo",
+            "Misture o ovo, a aveia, o fermento e a canela até virar uma massa homogênea",
+            "Aqueça uma frigideira antiaderente e despeje porções da massa",
+            "Cozinhe cada panqueca por 2 minutos de cada lado, até dourar."
+          ],
+          "imagem_url": "https://lorempixel.com/400/200/food/1"
+        },
+        {
+          "nome": "Smoothie Verde Detox",
+          "descrição": "Refrescante e leve, ideal para um boost de vitaminas.",
+          "ingredientes": [
+            "200 mL de água de coco",
+            "1 maçã verde fatiada",
+            "1 punhado de espinafre fresco",
+            "1/2 abacate",
+            "Suco de 1/2 limão."
+          ],
+          "modo_preparo": [
+            "Bata todos os ingredientes no liquidificador até ficar cremoso",
+            "Coe, se desejar, e sirva gelado."
+          ],
+          "imagem_url": "https://lorempixel.com/400/200/food/2"
+        },
+        {
+          "nome": "Omelete Mediterrânea",
+          "descrição": "Rápida, saborosa e cheia de cores",
+          "ingredientes": [
+            "2 ovos",
+            "1/4 de cebola roxa picada",
+            "5 tomates-cereja cortados ao meio",
+            "1 colher de sopa de queijo feta esfarelado",
+            "Orégano a gosto."
+          ],
+          "modo_preparo": [
+            "Bata levemente os ovos com sal e pimenta",
+            "Refogue a cebola em um fio de azeite, junte os tomates e deixe murchar",
+            "Despeje os ovos batidos, polvilhe o queijo feta e orégano",
+            "Cozinhe em fogo baixo até firmar a omelete e dobre ao meio."
+          ],
+          "imagem_url": "https://lorempixel.com/400/200/food/3"
+        }
+      ]
+    }
+  ]
+}
