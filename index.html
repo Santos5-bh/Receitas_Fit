@@ -42,6 +42,9 @@
           <li class="nav-item">
             <a class="nav-link active" href="login.html">Login</a>
           </li>
+          <li class="nav-item ms-auto">
+            <span id="userGreeting" class="nav-link"></span>
+          </li>
 
 
         </ul>
@@ -51,30 +54,25 @@
 
 
   <div class="search-box my-4 text-center">
-  <input
-    id="searchInput"
-    type="text"
-    class="form-control d-inline-block"
-    style="width: 300px;"
-    placeholder="Pesquisar receitas ou ingredientes..."
-  />
-  <button id="searchBtn" class="btn btn-primary ms-2">
-    Pesquisar
-  </button>
-</div>
+    <input id="searchInput" type="text" class="form-control d-inline-block" style="width: 300px;"
+      placeholder="Pesquisar receitas ou ingredientes..." />
+    <button id="searchBtn" class="btn btn-primary ms-2">
+      Pesquisar
+    </button>
+  </div>
 
   <div class="buttons">
-  <button onclick="showAll()">Todas</button>
-  <button onclick="filterCategory(0)">Dietas</button>
-  <button onclick="filterCategory(1)">Vitaminas</button>
-  <button onclick="filterCategory(2)">Café da Manhã</button>
-  <button onclick="filterCategory(3)">Almoço</button>
-  <button onclick="filterCategory(4)">Café da Tarde</button>
-  <button onclick="filterCategory(5)">Janta</button>
-  <!-- botão extra para receitas do usuário -->
-  <button onclick="filterCategory('user')">Minhas Receitas</button>
-  <button onclick="showFavorites()">Meus Favoritos</button>
-</div>
+    <button onclick="showAll()">Todas</button>
+    <button onclick="filterCategory(0)">Dietas</button>
+    <button onclick="filterCategory(1)">Vitaminas</button>
+    <button onclick="filterCategory(2)">Café da Manhã</button>
+    <button onclick="filterCategory(3)">Almoço</button>
+    <button onclick="filterCategory(4)">Café da Tarde</button>
+    <button onclick="filterCategory(5)">Janta</button>
+    <!-- botão extra para receitas do usuário -->
+    <button onclick="filterCategory('user')">Minhas Receitas</button>
+    <button onclick="showFavorites()">Meus Favoritos</button>
+  </div>
 
   <br><br><br>
 
@@ -236,7 +234,7 @@
     </button>
   </div>
 
-<div id="receitas"></div>
+  <div id="receitas"></div>
 
   <footer class="bg-light text-center text-lg-start mt-5">
     <div class="container p-4">
@@ -262,7 +260,7 @@
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  
+
   <script src="app.js"></script>
 </body>
 

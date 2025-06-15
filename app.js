@@ -1,112 +1,144 @@
 // app.js
 
-// 1) Endereço do JSON-Server
+// 1) URL do JSON‐Server
 const API = 'http://localhost:3000/receitas';
 
-// 2) Elemento onde vai aparecer tudo
-const container = document.getElementById('receitas');
+// 2) Elementos do DOM
+const container   = document.getElementById('receitas');
+const searchInput = document.getElementById('searchInput');
+const searchBtn   = document.getElementById('searchBtn');
+const userGreeting = document.getElementById('userGreeting');
 
-// 3) Guarda todas as categorias carregadas
-let categorias = [];
-
-// 4) Controla qual visão está ativa: 'all', 'category' ou 'favorites'
-let currentView = 'all';
+// 3) Estado
+let categorias      = [];
+let currentView     = 'all';      // 'all' | 'category' | 'favorites' | 'search'
 let currentCatIndex = null;
 
-// 5) Inicialização
-document.addEventListener('DOMContentLoaded', init);
-function init() {
+// 4) Inicialização
+document.addEventListener('DOMContentLoaded', () => {
+  showUserGreeting();
   fetch(API)
-    .then(resp => {
-      if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
-      return resp.json();
-    })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
     .then(data => {
       categorias = data;
-      // disponibiliza as funções para os botões inline
+      // expõe para botões inline
       window.filterCategory = filterCategory;
-      window.showFavorites   = showFavorites;
-      window.toggleFavorite  = toggleFavorite;
+      window.showFavorites  = showFavorites;
+      window.toggleFavorite = toggleFavorite;
+      // eventos de busca
+      searchInput.addEventListener('input', onSearch);
+      searchBtn.addEventListener('click', onSearch);
+      // mostra tudo ao carregar
       showAll();
     })
     .catch(err => {
       console.error(err);
       container.innerHTML = `<p class="text-danger">Não foi possível carregar as receitas.</p>`;
     });
+});
+
+// 5) Exibe o nome do usuário logado na navbar
+function showUserGreeting() {
+  const raw = localStorage.getItem('usuarioLogado');
+  if (!raw) return;
+  const user = JSON.parse(raw);
+  if (!user.username) return;
+  userGreeting.textContent = `Olá, ${user.username}`;
 }
 
-// 6) Exibe todas as receitas de todas as categorias
+// 6) Exibe todas as receitas
 function showAll() {
   currentView = 'all';
   currentCatIndex = null;
-
-  // achata todas as listas, preservando índice e nome da categoria
-  const tudo = categorias.flatMap((cat, idx) =>
-    (cat.lista||[]).map(item => ({ ...item, catIdx: idx, catNome: cat.nome }))
-  );
-
-  renderRecipes(tudo);
+  clearSearch();
+  renderRecipes(flattenAll());
 }
 
-// 7) Exibe só uma categoria
-function filterCategory(catIdx) {
+// 7) Filtra por categoria (índice numérico ou id string)
+function filterCategory(catKey) {
   currentView = 'category';
-  currentCatIndex = catIdx;
-
-  const cat = categorias[catIdx];
-  if (!cat) {
+  clearSearch();
+  let idx = typeof catKey === 'number'
+    ? catKey
+    : categorias.findIndex(c => String(c.id) === String(catKey));
+  if (idx < 0 || !categorias[idx]) {
     container.innerHTML = `<p class="text-danger">Categoria não encontrada.</p>`;
     return;
   }
-
-  const lista = (cat.lista||[]).map(item => ({
+  currentCatIndex = idx;
+  const lista = (categorias[idx].lista || []).map(item => ({
     ...item,
-    catIdx,
-    catNome: cat.nome
+    catIdx: idx,
+    catNome: categorias[idx].nome
   }));
-
   renderRecipes(lista);
 }
 
-// 8) Exibe só as favoritas
+// 8) Exibe só os favoritos do usuário corrente
 function showFavorites() {
   currentView = 'favorites';
   currentCatIndex = null;
-
-  const favKeys = getFavorites();  // e.g. ["2-0","4-3",...]
-  const favItens = [];
-
-  favKeys.forEach(key => {
+  clearSearch();
+  const fav = JSON.parse(localStorage.getItem(storageKey()) || '[]');
+  const itens = [];
+  fav.forEach(key => {
     const [catIdx, id] = key.split('-').map(Number);
     const cat = categorias[catIdx];
     if (!cat) return;
     const item = (cat.lista||[]).find(r => String(r.id) === String(id));
-    if (item) favItens.push({ ...item, catIdx, catNome: cat.nome });
+    if (item) itens.push({ ...item, catIdx, catNome: cat.nome });
   });
-
-  renderRecipes(favItens);
+  renderRecipes(itens);
 }
 
-// 9) Renderiza um array de receitas no container
+// 9) Pesquisa por nome ou ingrediente
+function onSearch() {
+  const term = searchInput.value.trim().toLowerCase();
+  if (!term) {
+    // volta à visão anterior
+    if (currentView === 'category') filterCategory(currentCatIndex);
+    else if (currentView === 'favorites') showFavorites();
+    else showAll();
+    return;
+  }
+  currentView = 'search';
+  const tudo = flattenAll();
+  const filtrado = tudo.filter(item => {
+    if (item.nome.toLowerCase().includes(term)) return true;
+    return (item.ingredientes||[]).some(ing =>
+      ing.toLowerCase().includes(term)
+    );
+  });
+  renderRecipes(filtrado);
+}
+
+// 10) Achata todas as categorias num só array
+function flattenAll() {
+  return categorias.flatMap((cat, idx) =>
+    (cat.lista||[]).map(item => ({
+      ...item,
+      catIdx: idx,
+      catNome: cat.nome
+    }))
+  );
+}
+
+// 11) Renderiza as receitas no container
 function renderRecipes(arr) {
   container.innerHTML = '';
-
   if (arr.length === 0) {
     container.innerHTML = `<p class="text-muted">Nenhuma receita para exibir.</p>`;
     return;
   }
-
   arr.forEach(item => {
-    const key = `${item.catIdx}-${item.id}`;
+    const key   = `${item.catIdx}-${item.id}`;
     const heart = isFavorite(key) ? '❤️' : '🤍';
-
     const art = document.createElement('article');
     art.className = 'container2';
     art.innerHTML = `
       <div class="recipe-header" style="display:flex;justify-content:space-between;align-items:center">
         <h3 style="margin:0">${item.nome}</h3>
         <button
-          class="btn-fav"
           onclick="toggleFavorite(${item.catIdx}, ${item.id})"
           style="background:none;border:none;font-size:1.5em;cursor:pointer"
         >${heart}</button>
@@ -120,32 +152,36 @@ function renderRecipes(arr) {
   });
 }
 
-// 10) Gerencia favoritos no localStorage
-function getFavorites() {
-  return JSON.parse(localStorage.getItem('favoritos') || '[]');
+// 12) Helpers para favoritos por usuário
+function getCurrentUser() {
+  return JSON.parse(localStorage.getItem('usuarioLogado') || 'null');
 }
-function saveFavorites(arr) {
-  localStorage.setItem('favoritos', JSON.stringify(arr));
-}
-function isFavorite(key) {
-  return getFavorites().includes(key);
+function storageKey() {
+  const u = getCurrentUser();
+  return u && u.id
+    ? `favoritos_user_${u.id}`
+    : 'favoritos_guest';
 }
 
-// 11) Adiciona ou remove favorito
+// 13) Verifica/remova/adiciona favorito no localStorage
+function isFavorite(key) {
+  const fav = JSON.parse(localStorage.getItem(storageKey()) || '[]');
+  return fav.includes(key);
+}
 function toggleFavorite(catIdx, id) {
   const key = `${catIdx}-${id}`;
-  let fav = getFavorites();
-
-  if (fav.includes(key)) {
-    fav = fav.filter(k => k !== key);
-  } else {
-    fav.push(key);
-  }
-
-  saveFavorites(fav);
-
-  // re-renderiza a visão atual para atualizar os corações
-  if (currentView === 'all') showAll();
+  let fav   = JSON.parse(localStorage.getItem(storageKey()) || '[]');
+  if (fav.includes(key)) fav = fav.filter(k => k !== key);
+  else fav.push(key);
+  localStorage.setItem(storageKey(), JSON.stringify(fav));
+  // re-renderiza a visão corrente
+  if      (currentView === 'all')      showAll();
   else if (currentView === 'category') filterCategory(currentCatIndex);
   else if (currentView === 'favorites') showFavorites();
+  else if (currentView === 'search')   onSearch();
+}
+
+// 14) Limpa campo de busca
+function clearSearch() {
+  searchInput.value = '';
 }

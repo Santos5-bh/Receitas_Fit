@@ -64,13 +64,13 @@ async function handleSubmit(ev) {
   const newRecipe = { nome, descrição, ingredientes, modo_preparo, imagem_url }
 
   try {
-    // 1) pega a categoria “user”
+    // ) pega a categoria “user”
     const cat = await getUserCategory()
 
-    // 2) monta novo array com a receita no final
+    // ) monta novo array com a receita no final
     const updatedLista = [...cat.lista, newRecipe]
 
-    // 3) dá um PATCH em /receitas/user
+    // ) dá um PATCH em /receitas/user
     const respPatch = await fetch(API_CAT, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
@@ -110,6 +110,8 @@ async function deleteRecipe(idx) {
   }
 }
 
+
+
 // inicializa tudo
 document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', handleSubmit)
@@ -118,3 +120,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // para o botão “Excluir” funcionar no onclick inline
 window.deleteRecipe = deleteRecipe
+
+

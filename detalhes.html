@@ -40,6 +40,9 @@
           <li class="nav-item">
             <a class="nav-link active" href="login.html">Login</a>
           </li>
+          <li class="nav-item ms-auto">
+            <span id="userGreeting" class="nav-link"></span>
+          </li>
         </ul>
       </div>
     </div>
@@ -86,8 +89,8 @@
   <script>
     const API = 'http://localhost:3000/receitas';
     const params = new URLSearchParams(location.search);
-    const catParam = params.get('cat');  // ex: "0" ou "user"
-    const idParam = params.get('id');   // ex: "2"
+    const catParam = params.get('cat');  
+    const idParam = params.get('id');  
 
     async function loadDetail() {
       try {

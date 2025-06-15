@@ -1,4 +1,4 @@
-// login.js
+
 
 // Endpoint do JSON‐Server para usuários
 const API = 'http://localhost:3000/usuarios';
@@ -18,10 +18,7 @@ formLogin.addEventListener('submit', async event => {
     const response = await fetch(
       `${API}?email=${encodeURIComponent(email)}&senha=${encodeURIComponent(senha)}`
     );
-
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
-    }
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
     const users = await response.json();
     if (users.length === 0) {
