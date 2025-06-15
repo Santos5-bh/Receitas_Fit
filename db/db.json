@@ -228,7 +228,7 @@
       ]
     },
     {
-      "id": "5",
+      "id": "2",
       "nome": "Café da manhã",
       "lista": [
         {
@@ -654,6 +654,21 @@
           "imagem_url": "https://lorempixel.com/400/200/food/3"
         }
       ]
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "543e",
+      "username": "Gabriel",
+      "email": "gabriel3977martins@gmail.com",
+      "senha": "ghs1234@#",
+      "favoritos": []
+    },
+    {
+      "id": "14fd",
+      "username": "Viviane",
+      "email": "vivisantoslmmartins@gmail.com",
+      "senha": "ghs123@#"
     }
   ]
 }

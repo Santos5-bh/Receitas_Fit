@@ -113,6 +113,16 @@ justify-content: center;
 width: 100%;
 }
 
+.fav-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #e74c3c;
+  margin: 0.5rem;
+}
+
+
 
 
 

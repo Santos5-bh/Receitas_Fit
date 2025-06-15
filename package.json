@@ -3,14 +3,29 @@
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
-    "start:api": "json-server --watch db/db.json --port 3000"
+    "api": "json-server --watch db/db.json --port 3000",
+    "serve": "http-server . -p 5500",
+    "dev": "concurrently \"npm run api\" \"npm run ui\""
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "http-server": "^14.1.1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
-    "http-server": "^14.1.1",
-    "json-server": "^1.0.0-beta.3"
-  }
+    "cors": "^2.8.5",
+    "json-server": "^1.0.0-beta.3",
+    "json-server-auth": "^2.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Santos5-bh/Receitas_Fit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Santos5-bh/Receitas_Fit/issues"
+  },
+  "homepage": "https://github.com/Santos5-bh/Receitas_Fit#readme",
+  "description": ""
 }
